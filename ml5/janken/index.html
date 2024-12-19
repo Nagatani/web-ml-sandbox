@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけんAI</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+
+</head>
+<body>
+    <h1>AIとじゃんけん対決！</h1>
+    <p>カメラに「グー」「チョキ」「パー」を見せて、AIと対戦しよう！</p>
+    
+    <!-- スコア表示エリア -->
+    <div id="scoreboard">
+        <p>あなたの手: <span id="user-hand">-</span></p>
+        <p>AIの手: <span id="ai-hand">-</span></p>
+        <p>結果: <span id="result">-</span></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
