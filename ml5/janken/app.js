@@ -31,7 +31,7 @@ async function draw() {
     const landmarks = hand.keypoints
 
     // 手のランドマーク(指の位置)を描画 (デバッグ用)
-    console.log(landmarks)
+    // console.log(landmarks)
     drawKeypoints(landmarks)
 
     // じゃんけんの手を認識 (グー, チョキ, パー)
@@ -40,7 +40,7 @@ async function draw() {
   }
 
   // ランダムにAIの手を生成 (数秒ごとに変更)
-  if (frameCount % 120 === 0) { // 2秒に1回AIの手を変える
+  if (userHand !== '-' && frameCount % 120 === 0) { // 2秒に1回AIの手を変える
     aiHand = getRandomHand()
     document.getElementById('ai-hand').innerText = aiHand
 
@@ -54,12 +54,18 @@ async function draw() {
 function gotHands(results) {
   // save the output to the hands variable
   predictions = results
+
+  // 手が検出されていない場合、userHandをリセットする
+  if (predictions.length === 0) {
+    userHand = "-"
+    document.getElementById('user-hand').innerText = userHand
+  }
 }
 
 function drawKeypoints(landmarks) {
   for (let i = 0; i < landmarks.length; i++) {
     const [x, y] = [landmarks[i].x, landmarks[i].y]
-    fill(0, 255, 0)
+    fill(255, 0, 0)
     noStroke()
     ellipse(x, y, 10, 10)
   }
